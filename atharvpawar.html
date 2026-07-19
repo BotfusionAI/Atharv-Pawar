@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260717-05-8209e4e"}');</script><script src="/_sdk/f432b76fb310b513.telemetry_sdk.js" integrity="sha512-9FJQ55EKmmqhyyik8BhrMVfm0+iYYfb8uOlRsjtkxJMEI97qOVEI4PnHohDjQAtvAep0IOEpdQ64eki0sz62ug=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atharv Pawar — Tech Founder &amp; AI Builder</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/8650958800d6c92a.element_sdk.js" integrity="sha512-zFMhEG5W24TdVhhc4yw+K4kKrl6mClLz7Nz7OlZcKY64bZTx26LpVI6mwMCarQMzfrHe8i4fBMu4fxoFej2m9g=="></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body { height: 100%; margin: 0; }
+
+    .app-root {
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Grid background */
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Glassmorphism */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .glass-card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card-hover:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(0, 255, 136, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 255, 136, 0.06);
+    }
+
+    /* Glow effects */
+    .neon-glow {
+      text-shadow: 0 0 40px rgba(0, 255, 136, 0.3), 0 0 80px rgba(0, 255, 136, 0.1);
+    }
+
+    .dot-pulse {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.6); }
+      50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(0, 255, 136, 0); }
+    }
+
+    /* Staggered reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes reveal-up {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal-d1 { animation-delay: 0.1s; }
+    .reveal-d2 { animation-delay: 0.25s; }
+    .reveal-d3 { animation-delay: 0.4s; }
+    .reveal-d4 { animation-delay: 0.55s; }
+    .reveal-d5 { animation-delay: 0.7s; }
+
+    /* Scroll reveal */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .scroll-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Nav */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1.5px;
+      background: #00ff88;
+      transition: width 0.3s;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Gradient line */
+    .accent-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,255,136,0.4), transparent);
+    }
+
+    /* Skill tag */
+    .skill-tag {
+      transition: all 0.3s;
+    }
+    .skill-tag:hover {
+      background: rgba(0,255,136,0.15);
+      border-color: rgba(0,255,136,0.5);
+      transform: scale(1.05);
+    }
+
+    /* Floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.12;
+      pointer-events: none;
+      animation: float 20s ease-in-out infinite;
+    }
+    .orb:nth-child(2) { animation-delay: -5s; }
+    .orb:nth-child(3) { animation-delay: -10s; }
+    
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -40px) scale(1.1); }
+      50% { transform: translate(-20px, 30px) scale(0.9); }
+      75% { transform: translate(40px, 20px) scale(1.05); }
+    }
+
+    /* Animated grid background */
+    @keyframes grid-shift {
+      0% { background-position: 0 0; }
+      100% { background-position: 60px 60px; }
+    }
+    
+    .grid-bg {
+      animation: grid-shift 30s linear infinite;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .mobile-menu.open { transform: translateX(0); }
+
+    /* Icon animations */
+    [data-lucide] {
+      animation: icon-pulse 3s ease-in-out infinite;
+    }
+
+    /* Staggered icon animations */
+    [data-lucide="user"], [data-lucide="book-open"], [data-lucide="target"], 
+    [data-lucide="code"], [data-lucide="trending-up"], [data-lucide="quote"],
+    [data-lucide="shield-check"], [data-lucide="users"], [data-lucide="package"],
+    [data-lucide="rocket"], [data-lucide="lightbulb"] {
+      animation: icon-float 4s ease-in-out infinite;
+    }
+
+    [data-lucide="zap"], [data-lucide="image"], [data-lucide="layers"],
+    [data-lucide="lightning"], [data-lucide="zap"] {
+      animation: icon-glow 2.5s ease-in-out infinite;
+    }
+
+    [data-lucide="mail"], [data-lucide="chevron-down"], [data-lucide="menu"],
+    [data-lucide="x"] {
+      animation: icon-bounce 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+    }
+
+    @keyframes icon-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    @keyframes icon-float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes icon-glow {
+      0%, 100% { 
+        filter: drop-shadow(0 0 0px currentColor);
+        transform: scale(1);
+      }
+      50% { 
+        filter: drop-shadow(0 0 12px rgba(0, 255, 136, 0.6));
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes icon-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* Stagger delays */
+    .orb i:nth-child(1) { animation-delay: 0s; }
+    .orb i:nth-child(2) { animation-delay: 0.2s; }
+    .orb i:nth-child(3) { animation-delay: 0.4s; }
+
+    /* Interactive hover glow for all icons */
+    [data-lucide]:hover {
+      filter: drop-shadow(0 0 8px rgba(0, 255, 136, 0.8)) !important;
+    }
+
+    /* Text shimmer effect */
+    .text-shimmer {
+      background: linear-gradient(90deg, #e0e6ed, #00ff88, #e0e6ed);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      50% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* Ambient glow lines */
+    .glow-line {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-line::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,255,136,0.3), transparent);
+      animation: slide-glow 6s ease-in-out infinite;
+    }
+
+    @keyframes slide-glow {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    /* Card glow on hover */
+    .glass-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(0,255,136,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+
+    .glass-card-hover:hover::before {
+      opacity: 1;
+      animation: glow-rotate 3s linear infinite;
+    }
+
+    @keyframes glow-rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/e3937a0574eb2d69.data_sdk.js" type="text/javascript" integrity="sha512-xbp/ACqEQy1aDxYMtXTrR3y5MUbzxuggRR/9sD48Gl4VhLMMCiAHsxMaFV6DTdeBpR6ymF+t2zhPKYkWM3+Jfw=="></script>
+ </head>
+ <body class="h-full">
+  <div id="app-root" class="app-root w-full font-outfit grid-bg" style="background-color: #060a0f; color: #e0e6ed;"><!-- Floating orbs -->
+   <div class="orb" style="width:500px;height:500px;background:#00ff88;top:10%;left:-10%;"></div>
+   <div class="orb" style="width:400px;height:400px;background:#00b4d8;top:60%;right:-8%;"></div>
+   <div class="orb" style="width:300px;height:300px;background:#00ff88;top:80%;left:20%;"></div><!-- Navigation -->
+   <nav class="fixed top-0 left-0 w-full z-50" style="background: rgba(6,10,15,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.04);">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"><a href="#hero" class="font-mono text-sm tracking-widest" style="color: #00ff88;">AP<span style="color: rgba(255,255,255,0.2);">_</span></a>
+     <div class="hidden md:flex items-center gap-8"><a href="#about" class="nav-link text-sm font-light tracking-wide" style="color: rgba(224,230,237,0.6);">About</a> <a href="#building" class="nav-link text-sm font-light tracking-wide" style="color: rgba(224,230,237,0.6);">Building</a> <a href="#vision" class="nav-link text-sm font-light tracking-wide" style="color: rgba(224,230,237,0.6);">Vision</a> <a href="#skills" class="nav-link text-sm font-light tracking-wide" style="color: rgba(224,230,237,0.6);">Skills</a> <a href="#contact" class="nav-link text-sm font-light tracking-wide" style="color: rgba(224,230,237,0.6);">Contact</a>
+     </div><button id="mobile-toggle" class="md:hidden" style="color: rgba(224,230,237,0.6);"> <i data-lucide="menu" style="width:22px;height:22px;"></i> </button>
+    </div>
+   </nav><!-- Mobile menu -->
+   <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 z-50 h-full w-64" style="background: rgba(6,10,15,0.95); backdrop-filter: blur(30px); border-left: 1px solid rgba(255,255,255,0.06);">
+    <div class="p-6"><button id="mobile-close" class="mb-8" style="color: rgba(224,230,237,0.6);"><i data-lucide="x" style="width:22px;height:22px;"></i></button>
+     <div class="flex flex-col gap-6"><a href="#about" class="mobile-link text-sm font-light tracking-wide" style="color: rgba(224,230,237,0.7);">About</a> <a href="#building" class="mobile-link text-sm font-light tracking-wide" style="color: rgba(224,230,237,0.7);">Building</a> <a href="#vision" class="mobile-link text-sm font-light tracking-wide" style="color: rgba(224,230,237,0.7);">Vision</a> <a href="#skills" class="mobile-link text-sm font-light tracking-wide" style="color: rgba(224,230,237,0.7);">Skills</a> <a href="#contact" class="mobile-link text-sm font-light tracking-wide" style="color: rgba(224,230,237,0.7);">Contact</a>
+     </div>
+    </div>
+   </div><!-- HERO -->
+   <section id="hero" class="relative flex items-center justify-center px-6" style="min-height: 100%; padding-top: 100px; padding-bottom: 60px;">
+    <div class="max-w-4xl mx-auto text-center">
+     <h1 id="el-hero-title" class="reveal reveal-d2 text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-none mb-4 neon-glow" style="color: #ffffff;">Atharv Pawar</h1>
+     <p id="el-hero-subtitle" class="reveal reveal-d3 font-mono text-sm sm:text-base tracking-widest uppercase mb-6" style="color: #00ff88;">Tech Founder &amp; AI Builder</p>
+     <p id="el-hero-tagline" class="reveal reveal-d4 text-lg sm:text-xl md:text-2xl font-light mb-8" style="color: rgba(224,230,237,0.6);">"Building Fast and Powerful AI Products"</p>
+     <p id="el-hero-intro" class="reveal reveal-d5 text-sm sm:text-base font-light leading-relaxed max-w-2xl mx-auto" style="color: rgba(224,230,237,0.45);">Atharv Pawar is a young entrepreneur focused on building innovative AI technology and powerful digital products.</p>
+     <div class="reveal reveal-d5 mt-10 flex items-center justify-center gap-4"><a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 hover:scale-105" style="background: #00ff88; color: #060a0f;"> <i data-lucide="mail" style="width:16px;height:16px;"></i> Get in Touch </a> <a href="#building" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-light transition-all duration-300 hover:scale-105" style="border: 1px solid rgba(0,255,136,0.3); color: #00ff88;"> <i data-lucide="rocket" style="width:16px;height:16px;"></i> See Projects </a>
+     </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" style="color: rgba(224,230,237,0.2);"><i data-lucide="chevron-down" style="width:20px;height:20px;"></i>
+    </div>
+   </section><!-- ABOUT -->
+   <section id="about" class="relative px-6 py-24">
+    <div class="accent-line max-w-6xl mx-auto mb-20"></div>
+    <div class="max-w-6xl mx-auto scroll-reveal">
+     <div class="flex items-center gap-3 mb-3"><span class="font-mono text-xs tracking-widest" style="color: rgba(0,255,136,0.6);">01</span>
+      <div style="width:40px;height:1px;background:rgba(0,255,136,0.3);"></div>
+     </div>
+     <h2 class="text-3xl sm:text-4xl font-semibold mb-10" style="color: #ffffff;">About</h2>
+     <div class="glass-card glass-card-hover rounded-2xl p-8 sm:p-10">
+      <div class="flex flex-col sm:flex-row items-start gap-6"><img src="canva://MAHOQCVzjso/1" alt="Atharv Pawar" loading="lazy" class="w-32 h-40 sm:w-40 sm:h-48 rounded-xl flex-shrink-0 object-cover" style="filter: brightness(1.35) saturate(1.4) contrast(1.15) hue-rotate(-5deg); box-shadow: 0 0 20px rgba(0,255,136,0.15);" onerror="this.style.background='#2a3f35'; this.alt='Photo unavailable';">
+       <div>
+        <div class="flex items-center gap-3 mb-4">
+         <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style="background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.15);"><i data-lucide="user" style="width:20px;height:20px;color:#00ff88;"></i>
+         </div>
+         <div>
+          <h3 class="font-semibold text-lg mb-1" style="color:#ffffff;">Who I Am</h3><span class="font-mono text-xs" style="color:rgba(0,255,136,0.5);">Founder · Builder · Innovator</span>
+         </div>
+        </div>
+        <p id="el-about-text" class="text-base sm:text-lg font-light leading-relaxed" style="color: rgba(224,230,237,0.6);">Atharv Pawar is the founder of Botfusion, an AI platform designed to solve slow responses and slow AI image generation. He is passionate about artificial intelligence, product development, and building impactful technology for the future.</p>
+       </div>
+      </div>
+     </div><!-- Background Story -->
+     <div class="glass-card glass-card-hover rounded-2xl p-8 sm:p-10 mt-8">
+      <div class="flex items-start gap-4 mb-6">
+       <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style="background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.15);"><i data-lucide="book-open" style="width:20px;height:20px;color:#00ff88;"></i>
+       </div>
+       <div>
+        <h3 class="font-semibold text-lg mb-1" style="color:#ffffff;">My Journey</h3><span class="font-mono text-xs" style="color:rgba(0,255,136,0.5);">From Vision to Impact</span>
+       </div>
+      </div>
+      <p id="el-background-text" class="text-base sm:text-lg font-light leading-relaxed" style="color: rgba(224,230,237,0.6);">Starting with a vision to revolutionize AI accessibility, I've spent years developing deep expertise in machine learning, product design, and startup strategy. My experience spans from ideation to scaling products that serve thousands of users daily.</p>
+     </div>
+    </div>
+   </section><!-- CURRENTLY BUILDING -->
+   <section id="building" class="relative px-6 py-24">
+    <div class="max-w-6xl mx-auto scroll-reveal">
+     <div class="flex items-center gap-3 mb-3"><span class="font-mono text-xs tracking-widest" style="color: rgba(0,255,136,0.6);">02</span>
+      <div style="width:40px;height:1px;background:rgba(0,255,136,0.3);"></div>
+     </div>
+     <h2 class="text-3xl sm:text-4xl font-semibold mb-10" style="color: #ffffff;">Currently Building</h2>
+     <div class="glass-card glass-card-hover rounded-2xl p-8 sm:p-10 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-48 h-48 opacity-10" style="background: radial-gradient(circle, #00ff88, transparent); filter: blur(40px);"></div>
+      <div class="relative">
+       <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background:rgba(0,255,136,0.12);border:1px solid rgba(0,255,136,0.2);"><i data-lucide="zap" style="width:18px;height:18px;color:#00ff88;"></i>
+        </div>
+        <div class="flex items-center gap-2"><span class="dot-pulse" style="background:#00ff88;width:6px;height:6px;"></span> <span class="font-mono text-xs" style="color:#00ff88;">ACTIVE</span>
+        </div>
+       </div>
+       <h3 id="el-building-title" class="text-2xl sm:text-3xl font-bold mb-4" style="color:#ffffff;">Botfusion AI</h3>
+       <p id="el-building-desc" class="text-base sm:text-lg font-light leading-relaxed mb-6" style="color: rgba(224,230,237,0.55);">A next-generation AI platform focused on lightning-fast responses, high-speed AI image generation, and powerful AI tools in one platform.</p><!-- Key Features -->
+       <div class="mb-8">
+        <h4 class="text-sm font-semibold mb-4" style="color: rgba(224,230,237,0.7);">Core Features</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+         <div class="flex items-start gap-3 p-3 rounded-lg" style="background: rgba(0,255,136,0.05); border: 1px solid rgba(0,255,136,0.1);"><i data-lucide="lightning" style="width:16px;height:16px;color:#00ff88;margin-top:2px;flex-shrink:0;"></i>
+          <div>
+           <p class="text-xs font-semibold" style="color:#fff;">Lightning-Fast</p>
+           <p class="text-xs font-light" style="color:rgba(224,230,237,0.4);">Sub-second responses</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3 p-3 rounded-lg" style="background: rgba(0,255,136,0.05); border: 1px solid rgba(0,255,136,0.1);"><i data-lucide="image" style="width:16px;height:16px;color:#00ff88;margin-top:2px;flex-shrink:0;"></i>
+          <div>
+           <p class="text-xs font-semibold" style="color:#fff;">AI Images</p>
+           <p class="text-xs font-light" style="color:rgba(224,230,237,0.4);">High-speed generation</p>
+          </div>
+         </div>
+         <div class="flex items-start gap-3 p-3 rounded-lg" style="background: rgba(0,255,136,0.05); border: 1px solid rgba(0,255,136,0.1);"><i data-lucide="layers" style="width:16px;height:16px;color:#00ff88;margin-top:2px;flex-shrink:0;"></i>
+          <div>
+           <p class="text-xs font-semibold" style="color:#fff;">All-in-One</p>
+           <p class="text-xs font-light" style="color:rgba(224,230,237,0.4);">Unified platform</p>
+          </div>
+         </div>
+        </div>
+       </div><!-- Tags -->
+       <div class="flex flex-wrap gap-3"><span class="font-mono text-xs px-3 py-1.5 rounded-full" style="background:rgba(0,255,136,0.08);color:rgba(0,255,136,0.7);border:1px solid rgba(0,255,136,0.12);">Fast Responses</span> <span class="font-mono text-xs px-3 py-1.5 rounded-full" style="background:rgba(0,255,136,0.08);color:rgba(0,255,136,0.7);border:1px solid rgba(0,255,136,0.12);">AI Image Gen</span> <span class="font-mono text-xs px-3 py-1.5 rounded-full" style="background:rgba(0,255,136,0.08);color:rgba(0,255,136,0.7);border:1px solid rgba(0,255,136,0.12);">All-in-One</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- VISION -->
+   <section id="vision" class="relative px-6 py-24">
+    <div class="accent-line max-w-6xl mx-auto mb-20"></div>
+    <div class="max-w-6xl mx-auto scroll-reveal">
+     <div class="flex items-center gap-3 mb-3"><span class="font-mono text-xs tracking-widest" style="color: rgba(0,255,136,0.6);">03</span>
+      <div style="width:40px;height:1px;background:rgba(0,255,136,0.3);"></div>
+     </div>
+     <h2 class="text-3xl sm:text-4xl font-semibold mb-10" style="color: #ffffff;">Vision &amp; Mission</h2>
+     <div class="glass-card rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden">
+      <div class="absolute inset-0 opacity-5" style="background:radial-gradient(ellipse at center, #00ff88, transparent 70%);"></div>
+      <div class="relative"><i data-lucide="quote" style="width:32px;height:32px;color:rgba(0,255,136,0.3);margin:0 auto 20px;display:block;"></i>
+       <p id="el-vision-quote" class="text-xl sm:text-2xl md:text-3xl font-light leading-relaxed italic" style="color: rgba(224,230,237,0.8);">"My mission is to build fast, intelligent, and accessible AI technology that empowers people around the world."</p>
+       <div class="mt-8 flex items-center justify-center gap-3">
+        <div style="width:32px;height:1px;background:rgba(0,255,136,0.4);"></div><span class="font-mono text-xs tracking-widest" style="color:rgba(0,255,136,0.6);">ATHARV PAWAR</span>
+        <div style="width:32px;height:1px;background:rgba(0,255,136,0.4);"></div>
+       </div>
+      </div>
+     </div><!-- Mission Statement -->
+     <div class="glass-card glass-card-hover rounded-2xl p-8 sm:p-10 mt-8">
+      <div class="flex items-start gap-4 mb-6">
+       <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style="background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.15);"><i data-lucide="target" style="width:20px;height:20px;color:#00ff88;"></i>
+       </div>
+       <div>
+        <h3 class="font-semibold text-lg mb-1" style="color:#ffffff;">Our Mission</h3><span class="font-mono text-xs" style="color:rgba(0,255,136,0.5);">Democratizing AI</span>
+       </div>
+      </div>
+      <p id="el-mission-text" class="text-base sm:text-lg font-light leading-relaxed" style="color: rgba(224,230,237,0.6);">To democratize access to powerful AI tools and make cutting-edge technology available to everyone. We believe that artificial intelligence should be fast, affordable, and easy to use for developers, businesses, and individuals worldwide.</p>
+     </div><!-- Core Values -->
+     <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300"><i data-lucide="zap" style="width:24px;height:24px;color:#00ff88;margin:0 auto 12px;display:block;"></i>
+       <h4 class="font-semibold text-sm mb-2" style="color:#fff;">Speed</h4>
+       <p class="text-xs font-light" style="color:rgba(224,230,237,0.4);">Lightning-fast execution and instant feedback</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300"><i data-lucide="shield-check" style="width:24px;height:24px;color:#00ff88;margin:0 auto 12px;display:block;"></i>
+       <h4 class="font-semibold text-sm mb-2" style="color:#fff;">Reliability</h4>
+       <p class="text-xs font-light" style="color:rgba(224,230,237,0.4);">Enterprise-grade reliability you can trust</p>
+      </div>
+      <div class="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300"><i data-lucide="users" style="width:24px;height:24px;color:#00ff88;margin:0 auto 12px;display:block;"></i>
+       <h4 class="font-semibold text-sm mb-2" style="color:#fff;">Accessibility</h4>
+       <p class="text-xs font-light" style="color:rgba(224,230,237,0.4);">Designed for everyone to use and benefit from</p>
+      </div>
+     </div>
+     <section id="skills" class="relative px-6 py-24">
+      <div class="max-w-6xl mx-auto scroll-reveal">
+       <div class="flex items-center gap-3 mb-3"><span class="font-mono text-xs tracking-widest" style="color: rgba(0,255,136,0.6);">04</span>
+        <div style="width:40px;height:1px;background:rgba(0,255,136,0.3);"></div>
+       </div>
+       <h2 class="text-3xl sm:text-4xl font-semibold mb-10" style="color: #ffffff;">Skills &amp; Expertise</h2><!-- Skill Categories -->
+       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8"><!-- Technical Skills -->
+        <div class="glass-card glass-card-hover rounded-2xl p-8">
+         <div class="flex items-start gap-4 mb-6">
+          <div class="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.15);"><i data-lucide="code" style="width:20px;height:20px;color:#00ff88;"></i>
+          </div>
+          <div>
+           <h3 class="font-semibold text-lg mb-1" style="color:#ffffff;">Technical Skills</h3><span class="font-mono text-xs" style="color:rgba(0,255,136,0.5);">Engineering Excellence</span>
+          </div>
+         </div>
+         <ul class="space-y-3">
+          <li class="flex items-start gap-3"><span class="text-xs mt-1" style="color:#00ff88;">▹</span>
+           <div>
+            <p class="font-medium text-sm" style="color:#fff;">Product Management</p>
+            <p class="text-xs font-light" style="color:rgba(224,230,237,0.4);">Defining features, prioritizing work, and shaping the roadmap</p>
+           </div></li>
+          <li class="flex items-start gap-3"><span class="text-xs mt-1" style="color:#00ff88;">▹</span>
+           <div>
+            <p class="font-medium text-sm" style="color:#fff;">AI Product Development</p>
+            <p class="text-xs font-light" style="color:rgba(224,230,237,0.4);">Understanding how AI products should work and what users need</p>
+           </div></li>
+          <li class="flex items-start gap-3"><span class="text-xs mt-1" style="color:#00ff88;">▹</span>
+           <div>
+            <p class="font-medium text-sm" style="color:#fff;">Prompt Engineering</p>
+            <p class="text-xs font-light" style="color:rgba(224,230,237,0.4);">Creating prompts and workflows for AI systems</p>
+           </div></li>
+         </ul>
+        </div><!-- Business Skills -->
+        <div class="glass-card glass-card-hover rounded-2xl p-8">
+         <div class="flex items-start gap-4 mb-6">
+          <div class="w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center" style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.15);"><i data-lucide="trending-up" style="width:20px;height:20px;color:#00ff88;"></i>
+          </div>
+          <div>
+           <h3 class="font-semibold text-lg mb-1" style="color:#ffffff;">Business Skills</h3><span class="font-mono text-xs" style="color:rgba(0,255,136,0.5);">Strategic Growth</span>
+          </div>
+         </div>
+         <ul class="space-y-3">
+          <li class="flex items-start gap-3"><span class="text-xs mt-1" style="color:#00ff88;">▹</span>
+           <div>
+            <p class="font-medium text-sm" style="color:#fff;">Startup Strategy</p>
+            <p class="text-xs font-light" style="color:rgba(224,230,237,0.4);">Thinking about pricing, positioning, growth, and business models</p>
+           </div></li>
+          <li class="flex items-start gap-3"><span class="text-xs mt-1" style="color:#00ff88;">▹</span>
+           <div>
+            <p class="font-medium text-sm" style="color:#fff;">Product Vision</p>
+            <p class="text-xs font-light" style="color:rgba(224,230,237,0.4);">Identifying problems and turning ideas into products like Botfusion</p>
+           </div></li>
+         </ul>
+        </div>
+       </div>
+       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="glass-card glass-card-hover skill-tag rounded-2xl p-6 flex items-start gap-4">
+         <div class="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.15);">
+          <i data-lucide="package" style="width:18px;height:18px;color:#00ff88;"></i>
+         </div>
+         <div>
+          <h4 class="font-medium mb-1" style="color:#fff;">Product Design</h4>
+          <p class="text-xs font-light" style="color:rgba(224,230,237,0.45);">End-to-end product strategy and user experience</p>
+         </div>
+        </div>
+        <div class="glass-card glass-card-hover skill-tag rounded-2xl p-6 flex items-start gap-4">
+         <div class="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.15);">
+          <i data-lucide="rocket" style="width:18px;height:18px;color:#00ff88;"></i>
+         </div>
+         <div>
+          <h4 class="font-medium mb-1" style="color:#fff;">Startup Scaling</h4>
+          <p class="text-xs font-light" style="color:rgba(224,230,237,0.45);">Growth strategy, fundraising, and team building</p>
+         </div>
+        </div>
+        <div class="glass-card glass-card-hover skill-tag rounded-2xl p-6 flex items-start gap-4">
+         <div class="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.15);">
+          <i data-lucide="lightbulb" style="width:18px;height:18px;color:#00ff88;"></i>
+         </div>
+         <div>
+          <h4 class="font-medium mb-1" style="color:#fff;">Innovation Strategy</h4>
+          <p class="text-xs font-light" style="color:rgba(224,230,237,0.45);">Identifying opportunities and driving disruption</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section><!-- CONTACT -->
+     <section id="contact" class="relative px-6 py-24 pb-16">
+      <div class="accent-line max-w-6xl mx-auto mb-20"></div>
+      <div class="max-w-6xl mx-auto scroll-reveal">
+       <div class="flex items-center gap-3 mb-3"><span class="font-mono text-xs tracking-widest" style="color: rgba(0,255,136,0.6);">05</span>
+        <div style="width:40px;height:1px;background:rgba(0,255,136,0.3);"></div>
+       </div>
+       <h2 class="text-3xl sm:text-4xl font-semibold mb-10" style="color: #ffffff;">Get in Touch</h2>
+       <div class="glass-card rounded-2xl p-8 sm:p-10 text-center">
+        <p class="text-base font-light mb-8" style="color:rgba(224,230,237,0.5);">Interested in working together or have a question? Reach out below.</p><a id="el-contact-link" href="mailto:pawaratharv727@gmail.com" class="inline-flex items-center gap-3 px-8 py-4 rounded-full text-base font-medium transition-all duration-300 hover:scale-105 break-all" style="background:#00ff88;color:#060a0f;"> <i data-lucide="mail" style="width:18px;height:18px;flex-shrink:0;"></i> <span id="el-contact-email-text">pawaratharv727@gmail.com</span> </a>
+       </div>
+      </div>
+     </section><!-- Footer -->
+     <footer class="px-6 py-10" style="border-top: 1px solid rgba(255,255,255,0.04);">
+      <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4"><span class="font-mono text-xs" style="color:rgba(224,230,237,0.25);">© 2026 Atharv Pawar</span> <span class="font-mono text-xs" style="color:rgba(224,230,237,0.15);">Built with purpose.</span>
+      </div>
+     </footer>
+    </div>
+    <script>
+    // Default config
+    const defaultConfig = {
+      hero_title: "Atharv Pawar",
+      hero_subtitle: "Tech Founder & AI Builder",
+      hero_tagline: '"Building Fast and Powerful AI Products"',
+      hero_intro: "Atharv Pawar is a young entrepreneur focused on building innovative AI technology and powerful digital products.",
+      about_text: "Atharv Pawar is the founder of Botfusion, an AI platform designed to solve slow responses and slow AI image generation. He is passionate about artificial intelligence, product development, and building impactful technology for the future.",
+      background_text: "Starting with a vision to revolutionize AI accessibility, I've spent years developing deep expertise in machine learning, product design, and startup strategy. My experience spans from ideation to scaling products that serve thousands of users daily.",
+      building_title: "Botfusion AI",
+      building_desc: "A next-generation AI platform focused on lightning-fast responses, high-speed AI image generation, and powerful AI tools in one platform.",
+      vision_quote: '"My mission is to build fast, intelligent, and accessible AI technology that empowers people around the world."',
+      mission_text: "To democratize access to powerful AI tools and make cutting-edge technology available to everyone. We believe that artificial intelligence should be fast, affordable, and easy to use for developers, businesses, and individuals worldwide.",
+      contact_email: "pawaratharv727@gmail.com",
+      contact_message: "Interested in working together or have a question? Reach out below.",
+      background_color: "#060a0f",
+      accent_color: "#00ff88",
+      text_color: "#e0e6ed",
+      card_color: "rgba(255,255,255,0.03)",
+      card_border_color: "rgba(255,255,255,0.06)",
+      font_family: "Outfit",
+      font_size: 16
+    };
+
+    function applyConfig(config) {
+      const c = { ...defaultConfig, ...config };
+
+      // Text content
+      const heroTitle = document.getElementById('el-hero-title');
+      if (heroTitle) heroTitle.textContent = c.hero_title;
+
+      const heroSub = document.getElementById('el-hero-subtitle');
+      if (heroSub) heroSub.textContent = c.hero_subtitle;
+
+      const heroTag = document.getElementById('el-hero-tagline');
+      if (heroTag) heroTag.textContent = c.hero_tagline;
+
+      const heroIntro = document.getElementById('el-hero-intro');
+      if (heroIntro) heroIntro.textContent = c.hero_intro;
+
+      const aboutText = document.getElementById('el-about-text');
+      if (aboutText) aboutText.textContent = c.about_text;
+
+      const backgroundText = document.getElementById('el-background-text');
+      if (backgroundText) backgroundText.textContent = c.background_text;
+
+      const buildTitle = document.getElementById('el-building-title');
+      if (buildTitle) buildTitle.textContent = c.building_title;
+
+      const buildDesc = document.getElementById('el-building-desc');
+      if (buildDesc) buildDesc.textContent = c.building_desc;
+
+      const visionQuote = document.getElementById('el-vision-quote');
+      if (visionQuote) visionQuote.textContent = c.vision_quote;
+
+      const missionText = document.getElementById('el-mission-text');
+      if (missionText) missionText.textContent = c.mission_text;
+
+      const contactLink = document.getElementById('el-contact-link');
+      if (contactLink) contactLink.href = 'mailto:' + c.contact_email;
+      const contactText = document.getElementById('el-contact-email-text');
+      if (contactText) contactText.textContent = c.contact_email;
+
+      // Colors
+      const root = document.getElementById('app-root');
+      if (root) {
+        root.style.backgroundColor = c.background_color;
+        root.style.color = c.text_color;
+      }
+
+      // Font
+      const customFont = c.font_family || defaultConfig.font_family;
+      const fontStack = `${customFont}, Outfit, sans-serif`;
+      if (root) root.style.fontFamily = fontStack;
+
+      // Font size
+      const base = c.font_size || defaultConfig.font_size;
+      if (heroTitle) heroTitle.style.fontSize = '';
+      if (heroSub) heroSub.style.fontSize = `${base * 0.85}px`;
+      if (heroTag) heroTag.style.fontSize = `${base * 1.35}px`;
+      if (heroIntro) heroIntro.style.fontSize = `${base}px`;
+      if (aboutText) aboutText.style.fontSize = `${base * 1.05}px`;
+      if (backgroundText) backgroundText.style.fontSize = `${base * 1.05}px`;
+      if (buildTitle) buildTitle.style.fontSize = `${base * 1.75}px`;
+      if (buildDesc) buildDesc.style.fontSize = `${base * 1.05}px`;
+      if (visionQuote) visionQuote.style.fontSize = `${base * 1.5}px`;
+      if (missionText) missionText.style.fontSize = `${base * 1.05}px`;
+    }
+
+    // Element SDK init
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => { applyConfig(config); },
+        mapToCapabilities: (config) => {
+          const c = { ...defaultConfig, ...config };
+          return {
+            recolorables: [
+              { get: () => c.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+              { get: () => c.card_border_color || defaultConfig.card_border_color, set: (v) => { config.card_border_color = v; window.elementSdk.setConfig({ card_border_color: v }); } },
+              { get: () => c.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+              { get: () => c.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } },
+            ],
+            borderables: [],
+            fontEditable: {
+              get: () => c.font_family || defaultConfig.font_family,
+              set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+            },
+            fontSizeable: {
+              get: () => c.font_size || defaultConfig.font_size,
+              set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+            }
+          };
+        },
+        mapToEditPanelValues: (config) => {
+          const c = { ...defaultConfig, ...config };
+          return new Map([
+            ["hero_title", c.hero_title],
+            ["hero_subtitle", c.hero_subtitle],
+            ["hero_tagline", c.hero_tagline],
+            ["hero_intro", c.hero_intro],
+            ["about_text", c.about_text],
+            ["background_text", c.background_text],
+            ["building_title", c.building_title],
+            ["building_desc", c.building_desc],
+            ["vision_quote", c.vision_quote],
+            ["mission_text", c.mission_text],
+            ["contact_email", c.contact_email],
+            ["contact_message", c.contact_message]
+          ]);
+        }
+      });
+    }
+
+    // Mobile menu
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileClose = document.getElementById('mobile-close');
+
+    mobileToggle.addEventListener('click', () => mobileMenu.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // Scroll reveal with IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Init Lucide icons
+    lucide.createIcons();
+  </script>
+   </section>
+  </div>
+ </body>
+</html>
